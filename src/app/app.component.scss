@@ -1,0 +1,29 @@
+@import "../assets/scss/main.scss";
+
+.sidenav-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: $color-grey-light-2;
+}
+
+mat-sidenav {
+  width: 200px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+mat-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  background-color: $color-tertiary-light;
+}
+
+.main-container {
+  padding: 5rem;
+}

@@ -1,0 +1,9 @@
+@import "../../assets/scss/main.scss";
+
+.active {
+  background-color: $color-grey-dark;
+}
+
+mat-nav-list a {
+  font-size: 1.5rem;
+}

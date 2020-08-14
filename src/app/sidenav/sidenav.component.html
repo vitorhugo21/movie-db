@@ -1,0 +1,27 @@
+<mat-nav-list>
+  <a
+    mat-list-item
+    routerLink="/"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    Popular Movies
+  </a>
+  <a mat-list-item routerLink="/topRated" routerLinkActive="active">
+    Top Rated Movies
+  </a>
+  <a mat-list-item routerLink="/upcoming" routerLinkActive="active">
+    Upcoming Movies
+  </a>
+</mat-nav-list>
+
+<mat-nav-list>
+  <a
+    mat-list-item
+    [routerLink]="['genre', genre.id]"
+    routerLinkActive="active"
+    *ngFor="let genre of genres"
+  >
+    {{ genre.name }}
+  </a>
+</mat-nav-list>
