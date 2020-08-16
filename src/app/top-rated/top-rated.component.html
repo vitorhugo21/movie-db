@@ -1,1 +1,20 @@
-<p>top-rated works!</p>
+<app-spinner [showMovies]="!showMovies"></app-spinner>
+
+<app-divider *ngIf="showMovies">Top Rated Movies</app-divider>
+
+<div
+  *ngIf="showMovies"
+  [ngClass]="showMovies ? 'card-container' : 'hide-card-container '"
+>
+  <app-card
+    [movie]="movie"
+    *ngFor="let movie of topRatedMovies.results"
+  ></app-card>
+</div>
+
+<app-pagination
+  *ngIf="showMovies && topRatedMovies.total_pages > 1"
+  [currentPage]="topRatedMovies.page"
+  [totalPages]="topRatedMovies.total_pages"
+  (page)="changePage($event)"
+></app-pagination>

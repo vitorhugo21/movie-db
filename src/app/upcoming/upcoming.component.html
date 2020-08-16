@@ -1,1 +1,20 @@
-<p>upcoming works!</p>
+<app-spinner [showMovies]="!showMovies"></app-spinner>
+
+<app-divider *ngIf="showMovies">Upcoming Movies</app-divider>
+
+<div
+  *ngIf="showMovies"
+  [ngClass]="showMovies ? 'card-container' : 'hide-card-container'"
+>
+  <app-card
+    [movie]="movie"
+    *ngFor="let movie of upcomingMovies.results"
+  ></app-card>
+</div>
+
+<app-pagination
+  *ngIf="showMovies && upcomingMovies.total_pages > 1"
+  [currentPage]="upcomingMovies.page"
+  [totalPages]="upcomingMovies.total_pages"
+  (page)="changePage($event)"
+></app-pagination>

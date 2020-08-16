@@ -7,21 +7,21 @@ const routes: Routes = [
     loadChildren: () =>
       import('./popular/popular.module').then((m) => m.PopularModule),
   },
-  // {
-  //   path: 'actor',
-  //   loadChildren: () =>
-  //     import('./actor/actor.module').then((m) => m.ActorModule),
-  // },
-  // {
-  //   path: 'genre',
-  //   loadChildren: () =>
-  //     import('./genre/genre.module').then((m) => m.GenreModule),
-  // },
-  // {
-  //   path: 'movie',
-  //   loadChildren: () =>
-  //     import('./movie/movie.module').then((m) => m.MovieModule),
-  // },
+  {
+    path: 'actor',
+    loadChildren: () =>
+      import('./actor/actor.module').then((m) => m.ActorModule),
+  },
+  {
+    path: 'genre',
+    loadChildren: () =>
+      import('./genre/genre.module').then((m) => m.GenreModule),
+  },
+  {
+    path: 'movie',
+    loadChildren: () =>
+      import('./movie/movie.module').then((m) => m.MovieModule),
+  },
   {
     path: 'topRated',
     loadChildren: () =>

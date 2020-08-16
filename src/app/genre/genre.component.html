@@ -1,0 +1,22 @@
+<app-spinner [showMovies]="!showMovies"></app-spinner>
+
+<app-divider *ngIf="showMovies">{{ genreTitle }}</app-divider>
+
+<div
+  *ngIf="showMovies"
+  [ngClass]="showMovies ? 'card-container' : 'hide-card-container '"
+>
+  <ng-container>
+    <app-card
+      [movie]="movie"
+      *ngFor="let movie of genreMovies.results"
+    ></app-card>
+  </ng-container>
+</div>
+
+<app-pagination
+  *ngIf="showMovies && genreMovies.total_pages > 1"
+  [currentPage]="genreMovies.page"
+  [totalPages]="genreMovies.total_pages"
+  (page)="changePage($event)"
+></app-pagination>

@@ -1,1 +1,20 @@
-<p>popular works!</p>
+<app-spinner [showMovies]="!showMovies"></app-spinner>
+
+<app-divider *ngIf="showMovies">Popular Movies</app-divider>
+
+<div
+  *ngIf="showMovies"
+  [ngClass]="showMovies ? 'card-container' : 'hide-card-container'"
+>
+  <app-card
+    [movie]="movie"
+    *ngFor="let movie of popularMovies.results"
+  ></app-card>
+</div>
+
+<app-pagination
+  *ngIf="showMovies && popularMovies.total_pages > 1"
+  [currentPage]="popularMovies.page"
+  [totalPages]="popularMovies.total_pages"
+  (page)="changePage($event)"
+></app-pagination>

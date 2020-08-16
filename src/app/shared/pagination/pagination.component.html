@@ -1,0 +1,18 @@
+<div class="pagination-container">
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onButtonClicked(currentPage - 1)"
+    [ngClass]="{ 'hide-btn': currentPage === 1 }"
+  >
+    Previous Page
+  </button>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onButtonClicked(currentPage + 1)"
+    [ngClass]="{ 'hide-btn': currentPage === totalPages }"
+  >
+    Next Page
+  </button>
+</div>
