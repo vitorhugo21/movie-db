@@ -23,6 +23,13 @@ const routes: Routes = [
       import('./movie/movie.module').then((m) => m.MovieModule),
   },
   {
+    path: 'searchMovie',
+    loadChildren: () =>
+      import('./search-movie/search-movie.module').then(
+        (m) => m.SearchMovieModule
+      ),
+  },
+  {
     path: 'topRated',
     loadChildren: () =>
       import('./top-rated/top-rated.module').then((m) => m.TopRatedModule),

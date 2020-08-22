@@ -1,0 +1,16 @@
+@import "../../assets/scss/main.scss";
+
+.form-container {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+
+  .search-input {
+    margin-right: 5rem;
+  }
+
+  .search-btn {
+    position: absolute;
+    top: 1rem;
+  }
+}

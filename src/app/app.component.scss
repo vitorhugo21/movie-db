@@ -18,14 +18,13 @@ mat-sidenav {
   flex-direction: column;
 }
 
-mat-toolbar {
-  display: flex;
-  justify-content: flex-end;
-  background-color: $color-tertiary-light;
-}
-
 .main-container {
   padding: 0 5rem;
+}
+
+.navbar-container {
+  padding: 0 5rem;
+  padding-top: 2rem;
 }
 
 .card-container {

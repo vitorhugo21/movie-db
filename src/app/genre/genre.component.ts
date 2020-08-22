@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { from, Subscription } from 'rxjs';
+import { from } from 'rxjs';
 import { find, pluck, switchMap } from 'rxjs/operators';
 import { Genre } from '../interfaces/genre.interface';
 import { TheMovieDbResponse } from '../interfaces/the-movie-db-response.interface';
@@ -11,11 +11,10 @@ import { GenreService } from '../services/genre.service';
   templateUrl: './genre.component.html',
   styleUrls: ['../../assets/scss/main.scss'],
 })
-export class GenreComponent implements OnInit, OnDestroy {
+export class GenreComponent implements OnInit {
   genreTitle = '';
   genreMovies: TheMovieDbResponse;
   showMovies = false;
-  genreSubscription: Subscription;
 
   constructor(
     private genreServices: GenreService,
@@ -44,12 +43,10 @@ export class GenreComponent implements OnInit, OnDestroy {
   }
 
   buildPage(pageNumber: number): void {
-    this.genreSubscription = this.route.params.subscribe(
-      (params: { id: number }) => {
-        this.getMovies(params.id, pageNumber);
-        this.getGenreName(params.id);
-      }
-    );
+    this.route.params.subscribe((params: { id: number }) => {
+      this.getMovies(params.id, pageNumber);
+      this.getGenreName(params.id);
+    });
   }
 
   getGenreName(genreId: number): void {
@@ -63,9 +60,5 @@ export class GenreComponent implements OnInit, OnDestroy {
       .subscribe((genreTitle: string) => {
         this.genreTitle = genreTitle;
       });
-  }
-
-  ngOnDestroy(): void {
-    this.genreSubscription.unsubscribe();
   }
 }
