@@ -10,7 +10,10 @@
 }
 
 mat-sidenav {
-  width: 200px;
+  width: 250px;
+  height: 100vh;
+  direction: rtl;
+  overflow: auto;
 }
 
 .container {
@@ -35,4 +38,8 @@ mat-sidenav {
   & > * {
     margin: 3rem 0;
   }
+}
+
+app-sidenav {
+  height: 100vh;
 }

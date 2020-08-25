@@ -1,5 +1,15 @@
 @import "../../assets/scss/main.scss";
 
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+
+  .hide-show-sidenav {
+    margin-top: 1rem;
+  }
+}
+
 .form-container {
   display: flex;
   justify-content: flex-end;

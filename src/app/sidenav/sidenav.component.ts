@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Genre } from '../interfaces/genre.interface';
 import { GenreService } from '../services/genre.service';
 
@@ -8,6 +8,8 @@ import { GenreService } from '../services/genre.service';
   styleUrls: ['./sidenav.component.scss'],
 })
 export class SidenavComponent implements OnInit {
+  @Input() sidenav: boolean;
+  @Output() sidenavChange = new EventEmitter<boolean>();
   genres: Genre[] = [];
 
   constructor(private genreService: GenreService) {}
@@ -16,5 +18,9 @@ export class SidenavComponent implements OnInit {
     this.genreService.getGenres().subscribe((genres: Genre[]) => {
       this.genres = genres;
     });
+  }
+
+  closeSidenav(): void {
+    this.sidenavChange.emit(!this.sidenav);
   }
 }

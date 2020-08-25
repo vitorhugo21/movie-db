@@ -1,11 +1,17 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav mode="side" opened>
-    <app-sidenav></app-sidenav>
+  <mat-sidenav mode="side" [(opened)]="opened">
+    <app-sidenav
+      [sidenav]="opened"
+      (sidenavChange)="opened = $event"
+    ></app-sidenav>
   </mat-sidenav>
   <mat-sidenav-content>
     <div class="container">
       <div class="navbar-container">
-        <app-toolbar></app-toolbar>
+        <app-toolbar
+          [sidenav]="opened"
+          (sidenavChange)="opened = $event"
+        ></app-toolbar>
       </div>
       <div class="main-container">
         <router-outlet></router-outlet>

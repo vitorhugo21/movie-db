@@ -1,1 +1,22 @@
-<p>search-movie works!</p>
+<app-spinner [showMovies]="!showMovies"></app-spinner>
+
+<app-divider *ngIf="showMovies">{{
+  'Search results for "' + title + '"'
+}}</app-divider>
+
+<div
+  *ngIf="showMovies"
+  [ngClass]="showMovies ? 'card-container' : 'hide-card-container'"
+>
+  <app-card
+    [movie]="movie"
+    *ngFor="let movie of searchMovies.results"
+  ></app-card>
+</div>
+
+<app-pagination
+  *ngIf="showMovies && searchMovies.total_pages > 1"
+  [currentPage]="searchMovies.page"
+  [totalPages]="searchMovies.total_pages"
+  (page)="changePage($event)"
+></app-pagination>

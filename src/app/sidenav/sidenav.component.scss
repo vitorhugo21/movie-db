@@ -1,9 +1,52 @@
 @import "../../assets/scss/main.scss";
 
-.active {
-  background-color: $color-grey-dark;
-}
+// .active {
+//   background-color: $color-sidenav;
+//   color: white;
+//   font-weight: bold;
+// }
 
 mat-nav-list a {
   font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+
+  &.active,
+  &.active:hover {
+    background-color: $color-sidenav;
+    color: white;
+    font-weight: bold;
+  }
+
+  &:hover {
+    background-color: rgba($color-sidenav, 0.3);
+  }
+}
+
+.sidenav {
+  direction: ltr;
+
+  &-header {
+    position: relative;
+    margin: 3rem auto;
+    width: 50%;
+
+    .close-icon {
+      position: absolute;
+      top: -30px;
+      right: -50px;
+    }
+  }
+
+  .genre-list {
+    margin-top: 3rem;
+  }
+}
+
+.close-icon {
+  color: $color-sidenav;
+
+  &:hover {
+    color: rgba($color-sidenav, 0.8);
+  }
 }

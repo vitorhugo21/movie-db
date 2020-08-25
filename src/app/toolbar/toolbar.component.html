@@ -1,20 +1,32 @@
-<form
-  [formGroup]="searchMovieForm"
-  class="form-container"
-  (ngSubmit)="onSubmit()"
-  (keydown.enter)="onSubmit()"
->
-  <mat-form-field class="search-input">
-    <mat-label>Search Movie</mat-label>
-    <input
-      matInput
-      placeholder="Search Movie"
-      formControlName="movie"
-      (click)="movie.setValue('')"
-    />
-  </mat-form-field>
-
-  <button mat-mini-fab color="primary" class="search-btn" type="submit">
-    <mat-icon>search</mat-icon>
+<div class="toolbar" [ngClass]="{ toolbar: !sidenav }">
+  <button
+    mat-mini-fab
+    color="primary"
+    class="hide-show-sidenav"
+    *ngIf="!sidenav"
+    (click)="openSidenav()"
+  >
+    <mat-icon>menu_open</mat-icon>
   </button>
-</form>
+
+  <form
+    [formGroup]="searchMovieForm"
+    class="form-container"
+    (ngSubmit)="onSubmit()"
+    (keydown.enter)="onSubmit()"
+  >
+    <mat-form-field class="search-input">
+      <mat-label>Search Movie</mat-label>
+      <input
+        matInput
+        placeholder="Search Movie"
+        formControlName="movie"
+        (click)="movie.setValue('')"
+      />
+    </mat-form-field>
+
+    <button mat-mini-fab color="primary" class="search-btn" type="submit">
+      <mat-icon>search</mat-icon>
+    </button>
+  </form>
+</div>

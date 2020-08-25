@@ -6,9 +6,14 @@ import { SearchMoviesService } from '../services/search-movies.service';
 @Component({
   selector: 'app-search-movie',
   templateUrl: './search-movie.component.html',
-  styleUrls: ['./search-movie.component.scss'],
+  styleUrls: ['../../assets/scss/main.scss'],
 })
 export class SearchMovieComponent implements OnInit {
+  searchMovies: TheMovieDbResponse;
+  showMovies = false;
+  querySearch = '';
+  title = '';
+
   constructor(
     private route: ActivatedRoute,
     private searchMoviesService: SearchMoviesService
@@ -20,15 +25,26 @@ export class SearchMovieComponent implements OnInit {
 
   buildPage(pageNumber: number = 1): void {
     this.route.params.subscribe((params: { movie: string }) => {
+      this.title = params.movie;
       this.getMovies(params.movie);
     });
   }
 
-  getMovies(query: string): void {
-    const formatedQuery = query.replace(' ', '+');
+  getMovies(query: string, pageNumber: number = 1): void {
+    this.showMovies = false;
+    this.querySearch = query.replace(' ', '+');
 
     this.searchMoviesService
-      .getMovies(formatedQuery)
-      .subscribe((response: TheMovieDbResponse) => console.log(response));
+      .getMovies(this.querySearch, pageNumber)
+      .subscribe((response: TheMovieDbResponse) => {
+        this.searchMovies = response;
+        setTimeout(() => {
+          this.showMovies = true;
+        }, 1500);
+      });
+  }
+
+  changePage(newPageNumber: number): void {
+    this.getMovies(this.querySearch, newPageNumber);
   }
 }
