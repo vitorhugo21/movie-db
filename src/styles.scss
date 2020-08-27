@@ -24,3 +24,14 @@ body {
   font-size: 1.6rem;
   line-height: 1.7;
 }
+
+.trailer-dialog-container .mat-dialog-container {
+  background-color: transparent;
+  box-shadow: none;
+  padding: 0px;
+  overflow: hidden;
+}
+
+.mat-button-focus-overlay {
+  background-color: transparent;
+}

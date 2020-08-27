@@ -1,0 +1,14 @@
+.trailer-container {
+  position: relative;
+
+  iframe {
+    border-radius: 1rem;
+  }
+  
+  button {
+    position: absolute;
+    right: 50px;
+    font-size: 2rem;
+  }
+}
+

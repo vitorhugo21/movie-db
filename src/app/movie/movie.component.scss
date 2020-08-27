@@ -1,0 +1,49 @@
+@import '../../assets/scss/main.scss';
+
+.movie-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+
+  &-details {
+    width: 50%;
+  }
+}
+
+.btn-links {
+  margin-top: 3rem;
+  width: 350px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.genre-container {
+  &-title {}
+
+  &-genres {
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+
+      .genre-item {
+        list-style-type:none;
+      }
+    }
+  }
+}
+
+.genre-margin {
+  margin-left: 2rem;
+}
+
+.remove-padding {
+  padding: 0;
+}
+
+a, button {
+  font-size: 1.3rem;
+  text-decoration: none;
+  color: $color-grey-dark;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
