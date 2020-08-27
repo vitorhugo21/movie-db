@@ -1,31 +1,59 @@
 <app-divider *ngIf="showMovie">{{ movie.tagline }}</app-divider>
 <div class="movie-container" *ngIf="showMovie">
-    <div class="movie-container-cover">
-        <app-cover [moviePoster]="movie.poster_path" [movieTitle]="movie.title"></app-cover>
+  <div class="movie-container-cover">
+    <app-cover
+      [moviePoster]="movie.poster_path"
+      [movieTitle]="movie.title"
+    ></app-cover>
+  </div>
+  <div class="movie-container-details">
+    <h1>{{ movie.title | uppercase }}</h1>
+    <div class="genre-container">
+      <h4 class="genre-container-title">Genres</h4>
     </div>
-    <div class="movie-container-details">
-        <h1>{{ movie.title | uppercase }}</h1>
-        <div class="genre-container">
-            <h4 class="genre-container-title">Genres</h4>
-        </div>
-        <div class="genre-container-genres">
-            <ul>
-                <li *ngFor="let genre of movie.genres; let first = first;"
-                    [ngClass]="{'genre-margin': !first}"
-                    class="genre-item">
-                        <a mat-button [routerLink]="['/genre', genre.id]" class="remove-padding">{{ genre.name }}</a>
-                </li>
-            </ul>
-        </div>
-        <h4>Overview</h4>
-        <p>{{ movie.overview }}</p>
-        <div class="btn-links">
-            <a target="_blank" [href]="movie.homepage" [disabled]="!movie.homepage" mat-stroked-button>HOMEPAGE</a>
-            <a target="_blank" [href]="'https://www.imdb.com/title/' + movie.imdb_id + '/'" [disabled]="!movie.imdb_id" mat-stroked-button>IMDB</a>
-            <button mat-stroked-button [disabled]="!movie.videos.results.length" (click)="openDialog()">TRAILER</button>
-        </div>
+    <div class="genre-container-genres">
+      <ul>
+        <li
+          *ngFor="let genre of movie.genres; let first = first"
+          [ngClass]="{ 'genre-margin': !first }"
+          class="genre-item"
+        >
+          <a
+            mat-button
+            [routerLink]="['/genre', genre.id]"
+            class="remove-padding"
+            >{{ genre.name }}</a
+          >
+        </li>
+      </ul>
     </div>
+    <h4>Overview</h4>
+    <p>{{ movie.overview }}</p>
+    <div class="btn-links">
+      <a
+        target="_blank"
+        [href]="movie.homepage"
+        [disabled]="!movie.homepage"
+        mat-stroked-button
+        >HOMEPAGE</a
+      >
+      <a
+        target="_blank"
+        [href]="'https://www.imdb.com/title/' + movie.imdb_id + '/'"
+        [disabled]="!movie.imdb_id"
+        mat-stroked-button
+        >IMDB</a
+      >
+      <button
+        mat-stroked-button
+        [disabled]="!movie.videos.results.length"
+        (click)="openDialog()"
+      >
+        TRAILER
+      </button>
+    </div>
+  </div>
 </div>
 <div class="movie-recommendations">
-    <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </div>
